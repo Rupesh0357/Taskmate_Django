@@ -13,7 +13,7 @@ def todolist(request):
         form = TaskForm(request.POST or None)
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.manager = request.users
+            instance.manager = request.user
             instance.save()
         messages.success(request,('New Task Added!'))
         return redirect('todolist')
